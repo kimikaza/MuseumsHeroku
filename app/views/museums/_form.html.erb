@@ -1,0 +1,386 @@
+<%= form_for(@museum) do |f| %>
+  <% if @museum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@museum.errors.count, "error") %> prohibited this museum from being saved:</h2>
+
+      <ul>
+      <% @museum.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<table>
+<tr>
+  <th></th>
+  <th>HRVATSKI</th>
+  <th>ENGLESKI</th>
+  <th>NJEMAČKI</th>
+</tr>
+<tr>
+  <td>KRATKI NAZIV MUZEJA</td>
+  <td>
+  <div class="field">
+    <%= f.text_field :name_hr, :size => 55 %>
+  </div>
+  </td>
+  <td>
+  <div class="field">
+    <%= f.text_field :name_en, :size => 55 %>
+  </div>
+  </td>
+  <td>
+  <div class="field">
+    <%= f.text_field :name_de, :size => 55 %>
+  </div>
+  </td>
+</tr>
+<!--<tr>
+  <td>DUGI NAZIV MUZEJA</td>
+  <td>
+  <div class="field">
+    <input id="museum_long_name_hr" name="museum[long_name_hr]" size="55" type="text" value="" />
+  </div>
+  </td>
+  <td>
+  <div class="field">
+    <input id="museum_long_name_en" name="museum[long_name_en]" size="55" type="text" value="" />
+  </div>
+  </td>
+  <td>
+  <div class="field">
+    <input id="museum_long_name_de" name="museum[long_name_de]" size="55" type="text" value="" />
+  </div>
+  </td>
+</tr>
+-->
+<tr>
+  <td>ULICA</td>
+  <td>
+  <div class="field">
+    <%= f.text_field :street, :size => 55 %>
+  </div>
+  </td>
+</tr>
+<tr>
+  <td>KUĆNI BROJ</td>
+  <td>
+  <div class="field">
+    <%= f.text_field :no, :size => 5 %>
+  </div> 
+  </td>
+</tr>
+<tr>
+  <td>GRAD</td>
+  <td>
+  <div class="field">
+    <%= f.text_field :city %>
+  </div>
+  </td>
+</tr>
+<tr>
+  <td>POŠTANSKI BROJ</td>
+  <td>
+  <div class="field">
+    <%= f.text_field :post %>
+  </div>
+  </td>
+</tr>
+<tr>
+  <td>GPS LATITUDE</td>
+  <td><div class="field">
+    <%= f.text_field :latitude %>
+  </div>
+  </td>  
+</tr>
+<tr>
+  <td>GPS LONGITUDE</td>
+  <td>
+  <div class="field">
+    <%= f.text_field :longitude %>
+  </div>
+  </td>
+</tr>
+<tr>
+  <td>TELEFON(I)</td>
+  <td>
+  <div class="field">
+    <%= f.text_field :tel, :size => 55 %>
+  </div>
+  </td>
+</tr>
+<tr>
+  <td>WEB STRANICA (bez http://)</td>
+  <td>
+  <div class="field">
+    <%= f.text_field :web, :size => 55 %>
+  </div>
+  </td>
+</tr>
+<tr>
+  <td>E-MAIL</td>
+  <td>
+  <div class="field">
+    <%= f.text_field :mail, :size => 55 %>
+  </div>
+  </td>
+</tr>
+<tr>
+  <td>O MUZEJU(naslov muzeja!)</td>
+  <td>
+  <div class="field">
+    <%= f.text_area :about_hr, :cols => 40, :rows => 15 %>
+  </div>
+  </td>
+  <td>
+  <div class="field">
+    <%= f.text_area :about_en, :cols => 40, :rows => 15 %>
+  </div>
+  </td>
+  <td>
+  <div class="field">
+    <%= f.text_area :about_de, :cols => 40, :rows => 15 %>
+  </div>
+  </td>
+</tr>
+<tr>
+  <td>RADNO VRIJEME</td>
+  <td>
+  <div class="field">
+    <% if @museum.new_record? %>
+      <%= f.text_area :hours_hr, :cols => 40, :rows => 10, :value => "<strong>Radno vrijeme</strong><br>\n\n<br><br<strong>Zatvoreno</strong><br>" %>
+    <% else %>
+      <%= f.text_area :hours_hr, :cols => 40, :rows => 10 %>
+    <% end %>    
+  </div>
+  </td>
+  <td> 
+  <div class="field">
+    <% if @museum.new_record? %>
+      <%= f.text_area :hours_en, :cols => 40, :rows => 10, :value => "<strong>Opening hours</strong><br>\n\n<br><br><strong>Closed</strong><br>" %>
+    <% else %>
+      <%= f.text_area :hours_en, :cols => 40, :rows => 10 %>
+    <% end %>    
+  </div>
+  </td>
+  <td>
+  <div class="field">
+    <% if @museum.new_record? %>
+      <%= f.text_area :hours_de, :cols => 40, :rows => 10, :value => "<strong>Öffnungszeiten</strong><br>\n\n<br><br><strong>Geschlossen</strong><br>" %>
+    <% else %>
+      <%= f.text_area :hours_de, :cols => 40, :rows => 10 %>
+    <% end %>   
+  </div>
+  </td>
+</tr>
+<tr>
+  <td>CIJENA ULAZNICE</td>
+  <td>
+  <div class="field">
+    <% if @museum.new_record? %>
+      <%= f.text_area :price_hr, :cols => 40, :rows => 10, :value => "<strong>Cijena ulaznice</strong><br>\n\n<br><br><strong>Grupe</strong><br>\n\n<br><br><strong>Besplatan ulaz</strong><br>" %>
+    <% else %>
+      <%= f.text_area :price_hr, :cols => 40, :rows => 10 %>
+    <% end %>       
+  </div>
+  </td>
+  <td>
+  <div class="field">
+    <% if @museum.new_record? %>
+      <%= f.text_area :price_en, :cols => 40, :rows => 10, :value => "<strong>Admission</strong><br>\n\n<br><br><strong>Groups</strong><br>\n\n<br><br><strong>Free admission</strong><br>" %>
+    <% else %>
+      <%= f.text_area :price_en, :cols => 40, :rows => 10 %>
+    <% end %>    
+  </div>
+  </td>
+  <td>
+  <div class="field">
+    <% if @museum.new_record? %>
+      <%= f.text_area :price_de, :cols => 40, :rows => 10, :value => "<strong>Eintrittspreise</strong><br>\n\n<br><br><strong>Gruppen</strong><br>\n\n<br><br><strong>Freier Eintritt</strong><br>" %>
+    <% else %>
+      <%= f.text_area :price_de, :cols => 40, :rows => 10 %>
+    <% end %>    
+  </div>
+  </td>
+</tr>
+<tr>
+  <td>STRUČNO VODSTVO</td>
+  <td>
+  <div class="field">
+    <% if @museum.new_record? %>
+      <%= f.text_area :guide_hr, :cols => 40, :rows => 5, :value => "<strong>Stručno vodstvo</strong><br>" %>
+    <% else %>
+      <%= f.text_area :guide_hr, :cols => 40, :rows => 5 %>
+    <% end %>
+  </div>
+  </td>
+  <td>
+  <div class="field">
+    <% if @museum.new_record? %>
+      <%= f.text_area :guide_en, :cols => 40, :rows => 5, :value => "<strong>Guided tours</strong><br>" %>
+    <% else %>
+      <%= f.text_area :guide_en, :cols => 40, :rows => 5 %>
+    <% end %>
+  </div>
+  </td>
+  <td>
+  <div class="field">
+    <% if @museum.new_record? %>
+      <%= f.text_area :guide_de, :cols => 40, :rows => 5, :value => "<strong>Fachführungen</strong><br>" %>
+    <% else %>
+      <%= f.text_area :guide_de, :cols => 40, :rows => 5 %>
+    <% end %>
+  </div>
+  </td> 
+</tr> 
+<tr>
+  <td>DOGAĐAJI</td>
+  <td>
+  <div class="field">
+    <% if @museum.new_record? %>
+      <%= f.text_area :event_hr, :cols => 40, :rows => 5, :value => "<strong>Događaji</strong><br><ul>\n<li></li>\n<li></li>\n</ul>" %>
+    <% else %>
+      <%= f.text_area :event_hr, :cols => 40, :rows => 5 %>
+    <% end %>
+  </div>
+  </td>
+  <td>
+  <div class="field">
+    <% if @museum.new_record? %>
+      <%= f.text_area :event_en, :cols => 40, :rows => 5, :value => "<strong>Events</strong><br><ul>\n<li></li>\n<li></li>\n</ul>" %>
+    <% else %>
+      <%= f.text_area :event_en, :cols => 40, :rows => 5 %>
+    <% end %>
+  </div>
+  </td>
+  <td>
+  <div class="field">
+    <% if @museum.new_record? %>
+      <%= f.text_area :event_de, :cols => 40, :rows => 5, :value => "<strong>Veranstaltungen</strong><br><ul>\n<li></li>\n<li></li>\n</ul>" %>
+    <% else %>
+      <%= f.text_area :event_de, :cols => 40, :rows => 5 %>
+    <% end %>
+  </div>
+  </td>
+</tr>
+<tr>
+  <td>DODATNE AKTIVNOSTI</td>
+  <td>
+  <div class="field">
+    <% if @museum.new_record? %>
+      <%= f.text_area :additional_hr, :cols => 40, :rows => 5, :value => "<strong>Dodatne aktivnosti</strong><br>" %>
+    <% else %>
+      <%= f.text_area :additional_hr, :cols => 40, :rows => 5 %>
+    <% end %>
+  </div>
+  </td>
+  <td>
+  <div class="field">
+    <% if @museum.new_record? %>
+      <%= f.text_area :additional_en, :cols => 40, :rows => 5, :value => "<strong>Additional activities</strong><br>" %>
+    <% else %>
+      <%= f.text_area :additional_en, :cols => 40, :rows => 5 %>
+    <% end %>
+  </div>
+  </td>
+  <td>
+  <div class="field">
+    <% if @museum.new_record? %>
+      <%= f.text_area :additional_de, :cols => 40, :rows => 5, :value => "<strong>Zusätzliche Aktivitäten</strong><br>" %>
+    <% else %>
+      <%= f.text_area :additional_de, :cols => 40, :rows => 5 %>
+    <% end %>
+  </div>
+  </td>
+</tr>
+<tr>
+  <td>NAPOMENA</td>
+  <td>
+  <div class="field">
+    <% if @museum.new_record? %>
+      <%= f.text_area :comment_hr, :cols => 40, :rows => 5, :value => "<strong>Napomena</strong><br>" %>
+    <% else %>
+      <%= f.text_area :comment_hr, :cols => 40, :rows => 5 %>
+    <% end %>
+  </div>
+  </td>
+  <td>
+  <div class="field">
+    <% if @museum.new_record? %>
+      <%= f.text_area :comment_en, :cols => 40, :rows => 5, :value => "<strong>Note</strong><br>" %>
+    <% else %>
+      <%= f.text_area :comment_en, :cols => 40, :rows => 5 %>
+    <% end %>
+  </div>
+  </td>
+  <td>
+  <div class="field">
+    <% if @museum.new_record? %>
+      <%= f.text_area :comment_de, :cols => 40, :rows => 5, :value => "<strong>Anmerkung</strong><br>" %>
+    <% else %>
+      <%= f.text_area :comment_de, :cols => 40, :rows => 5 %>
+    <% end %>
+  </div>
+  </td>
+</tr>
+<tr>
+  <td>AUDIO VODIČ</td>
+  <td>
+  <div class="field">
+    <%= f.text_field :audio, :size => 1 %>
+  </div>
+  </td>
+</tr>
+<tr>
+  <td>PRISTUP ZA INVALIDE</td>
+  <td>
+  <div class="field">
+    <%= f.text_field :access, :size => 1 %>
+  </div>
+  </td>
+</tr>
+<tr>
+  <td>SUVENIRNICA</td>
+  <td>
+  <div class="field">
+    <%= f.text_field :shop, :size => 1 %>
+  </div>
+  </td>
+</tr>
+<tr>
+  <td>KAFIĆ</td>
+  <td>
+  <div class="field">
+    <%= f.text_field :cafe, :size => 1 %>
+  </div>
+  </td>
+</tr>
+<tr>
+</table>
+
+
+  
+  <!--<div class="field">
+    <%= f.label :avg_rating %><br />
+    <%= f.text_field :avg_rating %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :favourite %><br />
+    <%= f.check_box :favourite %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :server_id %><br />
+    <%= f.text_field :server_id %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :timestmp %><br />
+    <%= f.text_field :timestmp %>
+  </div>-->
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

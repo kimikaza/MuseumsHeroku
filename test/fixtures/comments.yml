@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  commtext: MyString
+  commenter: MyString
+  museum_id: 1
+
+two:
+  commtext: MyString
+  commenter: MyString
+  museum_id: 1

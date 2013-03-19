@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Commtext:</b>
+  <%= @comment.commtext %>
+</p>
+
+<p>
+  <b>Commenter:</b>
+  <%= @comment.commenter %>
+</p>
+
+<p>
+  <b>Museum:</b>
+  <%= @comment.museum_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_museum_comment_path(@museum, @comment) %> |
+<%= link_to 'Back', museum_comments_path(@museum) %>
+

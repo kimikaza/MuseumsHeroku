@@ -1,0 +1,197 @@
+<p id="notice"><%= notice %></p>
+
+<table border="1">
+  <tr>
+    <th></th>
+    <th>HRVATSKI</th>
+    <th>ENGLESKI</th>
+    <th>NJEMAČKI</th>
+  </tr>
+  <tr>
+    <td>KRATKI NAZIV MUZEJA:</td>
+    <td>
+      <%= @museum.name_hr %>
+    </td>
+    <td>
+      <%= @museum.name_en %>
+    </td>
+    <td>
+      <%= @museum.name_de %>
+    </td>
+  </tr>
+  <tr>
+    <td>ULICA</td>
+    <td>
+      <%= @museum.street %>
+    </td>
+    <td colspan="2" rowspan="9"><%=link_to 'Edit Pictures', museum_pictures_path(@museum)%><table><% @museum.pictures.each do |picture| %>
+      <tr>
+        <td><%= picture.name %></td> 
+        <td><img src="<%= "#{ActionController::Base.relative_url_root}/data/#{picture.name}"%>" width="50"/></td>
+        <td><%= picture.order %></td>
+      </tr>
+    <% end %>
+    </table>
+    </td>
+  </tr>
+  <tr>
+    <td>KUĆNI BROJ</td>
+    <td>
+      <%= @museum.no %>
+    </td>
+  </tr>
+  <tr>
+    <td>GRAD</td>
+    <td>
+      <%= @museum.city %>
+    </td>
+  </tr>
+  <tr>
+    <td>POŠTANSKI BROJ</td>
+    <td>
+      <%= @museum.post %>
+    </td>
+  </tr>
+  <tr>
+    <td>GPS LATITUDE</td>
+    <td>
+      <%= @museum.latitude %>
+    </td>  
+  </tr>
+  <tr>
+    <td>GPS LONGITUDE</td>
+    <td>
+      <%= @museum.longitude %>
+    </td>
+  </tr>
+  <tr>
+    <td>TELEFON(I)</td>
+    <td>
+      <%= @museum.tel %>
+    </td>
+  </tr>
+  <tr>
+    <td>WEB STRANICA (bez http://)</td>
+    <td>
+      <%= @museum.web %>
+    </td>
+  </tr>
+  <tr>
+    <td>E-MAIL</td>
+    <td>
+      <%= @museum.mail %>
+    </td>
+  </tr>
+  <tr>
+    <td>O MUZEJU</td>
+    <td>
+      <%= @museum.about_hr %>
+    </td>
+    <td>
+      <%= @museum.about_en %>
+    </td>
+    <td>
+      <%= @museum.about_de %>
+    </td>
+  </tr>
+  <tr>
+    <td>RADNO VRIJEME</td>
+    <td>
+      <%= @museum.hours_hr %>
+    </td>
+    <td> 
+      <%= @museum.hours_en %>
+    </td>
+    <td>
+      <%= @museum.hours_de %>
+    </td>
+  </tr>
+<tr>
+  <td>CIJENA ULAZNICE</td>
+  <td>
+    <%= @museum.price_hr %>
+  </td>
+  <td>
+    <%= @museum.price_en %>
+  </td>
+  <td>
+    <%= @museum.price_de %>
+  </td>
+</tr>
+<tr>
+  <td>STRUČNO VODSTVO</td>
+  <td>
+    <%= @museum.guide_hr %>
+  </td>
+  <td>
+    <%= @museum.guide_en %>
+  </td>
+  <td>
+    <%= @museum.guide_de %>
+  </td> 
+</tr> 
+<tr>
+  <td>DOGAĐAJI</td>
+  <td>
+    <%= @museum.event_hr %>
+  </td>
+  <td>
+    <%= @museum.event_en %>
+  </td>
+  <td>
+    <%= @museum.event_de %>
+  </td>
+</tr>
+<tr>
+  <td>DODATNE AKTIVNOSTI</td>
+  <td>
+    <%= @museum.additional_hr %>
+  </td>
+  <td>
+    <%= @museum.additional_en %>
+  </td>
+  <td>
+    <%= @museum.additional_de %>
+  </td>
+</tr>
+<tr>
+  <td>NAPOMENA</td>
+  <td>
+    <%= @museum.comment_hr %>
+  </td>
+  <td>
+    <%= @museum.comment_en %>
+  </td>
+  <td>
+    <%= @museum.comment_de %>
+  </td>
+</tr>
+<tr>
+  <td>AUDIO VODIČ</td>
+  <td>
+    <%= @museum.audio %>
+  </td>
+</tr>
+<tr>
+  <td>PRISTUP ZA INVALIDE</td>
+  <td>
+    <%= @museum.access %>
+  </td>
+</tr>
+<tr>
+  <td>SUVENIRNICA</td>
+  <td>
+    <%= @museum.shop %>
+  </td>
+</tr>
+<tr>
+  <td>KAFIĆ</td>
+  <td>
+    <%= @museum.cafe %>
+  </td>
+</tr>
+<tr>
+</table>
+
+<%= link_to 'Edit', edit_museum_path(@museum) %> |
+<%= link_to 'Back', museums_path %>
